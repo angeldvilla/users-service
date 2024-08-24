@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UserManagementService"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="http://www.example.org/users/"
+    targetNamespace="http://www.example.org/users/"
+    xmlns:ns="http://www.example.org/users/">
+
+    <!-- Mensajes para el login -->
+    <message name="LoginRequest">
+        <part name="username" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+    <message name="LoginResponse">
+        <part name="sessionId" type="xsd:string"/>
+        <part name="userDetails" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para la creación de usuario -->
+    <message name="CreateUserRequest">
+        <part name="name" type="xsd:string"/>
+        <part name="lastname" type="xsd:string"/>
+        <part name="address" type="xsd:string"/>
+        <part name="phone" type="xsd:string"/>
+        <part name="username" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+    <message name="CreateUserResponse">
+        <part name="success" type="xsd:string"/>
+        <part name="userId" type="xsd:string"/>
+        <part name="name" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para la actualización de usuario -->
+    <message name="UpdateUserRequest">
+        <part name="id" type="xsd:string"/>
+         <part name="name" type="xsd:string"/>
+        <part name="lastname" type="xsd:string"/>
+        <part name="address" type="xsd:string"/>
+        <part name="phone" type="xsd:string"/>
+        <part name="username" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+    <message name="UpdateUserResponse">
+        <part name="success" type="xsd:string"/>
+        <part name="userId" type="xsd:string"/>
+        <part name="name" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para la eliminación de usuario -->
+    <message name="DeleteUserRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="DeleteUserResponse">
+        <part name="success" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para obtener todos los usuarios -->
+    <message name="GetAllUsersRequest"/>
+    <message name="GetAllUsersResponse">
+        <part name="users" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para obtener detalles de usuario -->
+    <message name="GetUserDetailRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="GetUserDetailResponse">
+        <part name="userDetails" type="xsd:string"/>
+    </message>
+
+    <portType name="UserManagementPortType">
+        <operation name="login">
+            <input message="tns:LoginRequest"/>
+            <output message="tns:LoginResponse"/>
+        </operation>
+        <operation name="createUser">
+            <input message="tns:CreateUserRequest"/>
+            <output message="tns:CreateUserResponse"/>
+        </operation>
+        <operation name="updateUser">
+            <input message="tns:UpdateUserRequest"/>
+            <output message="tns:UpdateUserResponse"/>
+        </operation>
+        <operation name="deleteUser">
+            <input message="tns:DeleteUserRequest"/>
+            <output message="tns:DeleteUserResponse"/>
+        </operation>
+        <operation name="getAllUsers">
+            <input message="tns:GetAllUsersRequest"/>
+            <output message="tns:GetAllUsersResponse"/>
+        </operation>
+        <operation name="getUserDetail">
+            <input message="tns:GetUserDetailRequest"/>
+            <output message="tns:GetUserDetailResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="UserManagementBinding" type="tns:UserManagementPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="login">
+            <soap:operation soapAction="http://www.example.org/users/login"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="createUser">
+            <soap:operation soapAction="http://www.example.org/users/createUser"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="updateUser">
+            <soap:operation soapAction="http://www.example.org/users/updateUser"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="deleteUser">
+            <soap:operation soapAction="http://www.example.org/users/deleteUser"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="getAllUsers">
+            <soap:operation soapAction="http://www.example.org/users/getAllUsers"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="getUserDetail">
+            <soap:operation soapAction="http://www.example.org/users/getUserDetail"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.example.org/users/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="UserService">
+        <port name="UsersPort" binding="tns:UserManagementBinding">
+            <soap:address location="http://localhost:3002/users"/>
+        </port>
+    </service>
+</definitions>
