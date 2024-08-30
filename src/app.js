@@ -1,5 +1,6 @@
 const sequelize = require('./config/db');
 const Users = require('./models/users');
+const Roles = require('./models/roles');
 
 sequelize.sync({ force: true })
     .then(() => {
