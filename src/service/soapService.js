@@ -1,30 +1,35 @@
 const bcrypt = require('bcrypt');
 const Users = require("../models/users");
+const Roles = require("../models/roles");
 
 const SALT_ROUNDS = 10;
 
 const userService = {
     UserService: {
         UsersPort: {
-            getAllUsers: async function (args) {
+            getAllUsers: async function () {
                 try {
-                    const users = await Users.findAll();
-                    return { users: JSON.stringify(users.map(p => p.dataValues)) };
+                    const users = await Users.findAll({
+                        include: [Roles]
+                    });
+                    return { users: JSON.stringify(users.map(user => user.dataValues)) };
                 } catch (err) {
                     console.error('Error fetching users:', err);
-                    throw new Error('Error fetching users');
+                    throw new Error('Could not fetch users');
                 }
             },
             getUserDetail: async function (args) {
                 try {
-                    const user = await Users.findByPk(args.id);
+                    const user = await Users.findByPk(args.id, {
+                        include: [Roles]
+                    });
                     if (!user) {
                         throw new Error('User not found');
                     }
                     return { userDetails: JSON.stringify(user.dataValues) };
                 } catch (err) {
                     console.error('Error fetching user details:', err);
-                    throw new Error('Error fetching user details');
+                    throw new Error('Could not fetch user details');
                 }
             },
             createUser: async function (args) {
@@ -39,10 +44,12 @@ const userService = {
                     args.password = hashedPassword;
 
                     const newUser = await Users.create(args);
+                    const roleName = Roles.find(rol => rol.id === newUser.rol_id).rol_name;
                     return {
                         success: 'User created successfully',
                         userId: newUser.id.toString(),
-                        name: newUser.name
+                        name: newUser.name,
+                        rol: roleName
                     };
                 } catch (err) {
                     console.error('Error creating user:', err);
