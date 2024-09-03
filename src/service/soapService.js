@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Users = require("../models/users");
 const Roles = require("../models/roles");
+const Status = require('../models/status');
 
 const SALT_ROUNDS = 10;
 
@@ -44,12 +45,14 @@ const userService = {
                     args.password = hashedPassword;
 
                     const newUser = await Users.create(args);
-                    const roleName = Roles.find(rol => rol.id === newUser.rol_id).rol_name;
+                    const roleName = Roles.find(rol => rol.id === newUser.rol_id).rol;
+                    const status = Status.find(stat => stat.id === newUser.status_id).status_name;
                     return {
                         success: 'User created successfully',
                         userId: newUser.id.toString(),
                         name: newUser.name,
-                        rol: roleName
+                        rol: roleName,
+                        status: status,
                     };
                 } catch (err) {
                     console.error('Error creating user:', err);
