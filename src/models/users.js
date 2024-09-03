@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const bcrypt = require('bcrypt');
 const Role = require('./roles');
+const Status = require('./status');
 
 const Users = sequelize.define('Users', {
     id: {
@@ -26,12 +27,12 @@ const Users = sequelize.define('Users', {
         allowNull: false,
         unique: true,
     },
-    username: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
-    email: {
+    username: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -45,6 +46,14 @@ const Users = sequelize.define('Users', {
         allowNull: false,
         references: {
             model: Role,
+            key: 'id'
+        },
+    },
+    status_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Status,
             key: 'id'
         },
     }
@@ -64,3 +73,6 @@ module.exports = Users;
 
 Users.belongsTo(Role, { foreignKey: 'role_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Role.hasMany(Users, { foreignKey: 'role_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+
+Users.belongsTo(Status, { foreignKey: 'status_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+Status.hasMany(Users, { foreignKey: 'status_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
