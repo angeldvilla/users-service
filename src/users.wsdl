@@ -28,6 +28,7 @@
         <part name="email" type="xsd:string"/>
         <part name="password" type="xsd:string"/>
         <part name="rol_id" type="xsd:int"/>
+        <part name="status_id" type="xsd:int"/>
     </message>
     <message name="CreateUserResponse">
         <part name="success" type="xsd:string"/>
@@ -46,6 +47,7 @@
         <part name="email" type="xsd:string"/>
         <part name="password" type="xsd:string"/>
         <part name="rol_id" type="xsd:int"/>
+        <part name="status_id" type="xsd:int"/>
     </message>
     <message name="UpdateUserResponse">
         <part name="success" type="xsd:string"/>
