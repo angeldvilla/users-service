@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <definitions name="StatuService"
+             targetNamespace="http://www.example.org/statuses/"
+             xmlns:tns="http://www.example.org/statuses/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:tns="http://www.example.org/statuses/"
+                targetNamespace="http://www.example.org/statuses/">
+
+     <!-- Define Modelo de Estados -->
+        <xsd:complexType name="Status">
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int"/>
+                <xsd:element name="status_name" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+
+           <!-- Define Array de Estadosd -->
+        <xsd:complexType name="StatusArray">
+            <xsd:sequence>
+                <xsd:element name="status" type="tns:Status" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+
+ </xsd:schema>
+
+    <!-- Mensajes para obtener todos los estados -->
+    <message name="GetAllStatusRequest"/>
+    <message name="GetAllStatusResponse">
+        <part name="status" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para la creación de un estado -->
+    <message name="CreateStatusRequest">
+        <part name="status_name" type="xsd:string"/>
+    </message>
+    <message name="CreateStatusResponse">
+        <part name="success" type="xsd:string"/>
+        <part name="stat" type="xsd:string"/>
+    </message>
+
+
+    <portType name="StatusPortType">
+     <operation name="getStatus">
+            <input message="tns:GetAllStatusRequest"/>
+            <output message="tns:GetAllStatusResponse"/>
+        </operation>
+        <operation name="createStatus">
+            <input message="tns:CreateStatusRequest"/>
+            <output message="tns:CreateStatusResponse"/>
+        </operation>
+    </portType>
+
+
+    <binding name="StatusBinding" type="tns:StatusPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+         <operation name="getStatus">
+            <soap:operation soapAction="urn:getStatus"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="createStatus">
+            <soap:operation soapAction="urn:createStatus"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="StatuService">
+        <port name="StatusPort" binding="tns:StatusBinding">
+            <soap:address location="http://localhost:3002/statuses"/>
+        </port>
+    </service>
+
+</definitions>
