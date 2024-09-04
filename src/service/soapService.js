@@ -11,9 +11,11 @@ const userService = {
             getAllUsers: async function () {
                 try {
                     const users = await Users.findAll({
-                        include: [Roles]
+                        include: [Roles, Status]
                     });
-                    return { users: JSON.stringify(users.map(user => user.dataValues)) };
+                    return {
+                        users: users.map(user => user.dataValues)
+                    };
                 } catch (err) {
                     console.error('Error fetching users:', err);
                     throw new Error('Could not fetch users');
@@ -22,12 +24,12 @@ const userService = {
             getUserDetail: async function (args) {
                 try {
                     const user = await Users.findByPk(args.id, {
-                        include: [Roles]
+                        include: [Roles, Status]
                     });
                     if (!user) {
                         throw new Error('User not found');
                     }
-                    return { userDetails: JSON.stringify(user.dataValues) };
+                    return user.dataValues;
                 } catch (err) {
                     console.error('Error fetching user details:', err);
                     throw new Error('Could not fetch user details');
@@ -45,14 +47,15 @@ const userService = {
                     args.password = hashedPassword;
 
                     const newUser = await Users.create(args);
-                    const roleName = Roles.find(rol => rol.id === newUser.rol_id).rol;
-                    const status = Status.find(stat => stat.id === newUser.status_id).status_name;
+
+                    const roleName = await Roles.findOne({ where: { id: args.role_id } });
+                    const status = await Status.findOne({ where: { id: args.status_id } });
                     return {
                         success: 'User created successfully',
                         userId: newUser.id.toString(),
                         name: newUser.name,
-                        rol: roleName,
-                        status: status,
+                        rol: roleName.rol,
+                        status: status.status_name,
                     };
                 } catch (err) {
                     console.error('Error creating user:', err);
