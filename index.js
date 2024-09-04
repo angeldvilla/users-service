@@ -3,10 +3,17 @@ const soap = require('soap');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const userService = require('./src/service/soapService');
 const sequelize = require('./src/config/db');
 
-const wsdl = require('fs').readFileSync('src/users.wsdl', 'utf8');
+//servicios
+const userService = require('./src/service/userService');
+const rolesService = require('./src/service/roleService');
+const statusService = require('./src/service/statService');
+
+//WSDL
+const usersWSDL = require('fs').readFileSync('src/wsdl/users.wsdl', 'utf8');
+const rolesWSDL = require('fs').readFileSync('src/wsdl/roles.wsdl', 'utf8');
+const statusesWSDL = require('fs').readFileSync('src/wsdl/status.wsdl', 'utf8');
 
 const app = express();
 
@@ -26,12 +33,15 @@ app.use((req, res, next) => {
 
 sequelize.authenticate()
     .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log('La conexión se ha establecido correctamente.');
+        soap.listen(app, '/users', userService, usersWSDL);
+        soap.listen(app, '/roles', rolesService, rolesWSDL);
+        soap.listen(app, '/statuses', statusService, statusesWSDL);
+        
         app.listen(3002, function () {
-            console.log('SOAP server listening on port 3002');
+            console.log('Servidor SOAP corriendo en el puerto 3002');
         });
-        soap.listen(app, '/users', userService, wsdl);
     })
     .catch(err => {
-        console.error('Unable to connect to the database:', err);
+        console.error('No se puede conectar a la base de datos:', err);
     });
