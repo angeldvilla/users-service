@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const bcrypt = require('bcrypt');
 const Role = require('./roles');
 const Status = require('./status');
 
@@ -59,13 +58,6 @@ const Users = sequelize.define('Users', {
     }
 }, {
     timestamps: false,
-    hooks: {
-        beforeCreate: async (user) => {
-            // Encriptar la contraseña antes de guardarla
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(user.password, salt);
-        }
-    }
 });
 
 module.exports = Users;
