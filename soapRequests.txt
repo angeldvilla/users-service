@@ -1,0 +1,162 @@
+ESTADOS:
+
+
+VER
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:stat="http://www.example.org/statuses/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <stat:getStatus />
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+CREAR
+-----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:stat="http://www.example.org/statuses/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <stat:createStatus>
+            <status_name>Activo</status_name>
+        </stat:createStatus>
+        <stat:createStatus>
+            <status_name>Inactivo</status_name>
+        </stat:createStatus>
+        <stat:createStatus>
+            <status_name>Bloqueado</status_name>
+        </stat:createStatus>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+------------------
+
+ROLES:
+
+
+VER
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:rol="http://www.example.org/roles/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <stat:getRoles />
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+CREAR
+-----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:rol="http://www.example.org/roles/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <rol:createRole>
+            <rol>Administrador</rol>
+        </rol:createRole>
+        <rol:createRole>
+            <rol>Empleado</rol>
+        </rol:createRole>
+        <rol:createRole>
+            <rol>Cliente</rol>
+        </rol:createRole>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+------------------
+
+USUARIOS:
+
+
+VER TODOS LOS USUARIOS
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://www.example.org/users/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:getAllUsers />
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+VER DETALLE DE USUARIO
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://www.example.org/users/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:getUserDetail>
+        <id>81970b1f-b833-4ba3-b828-9164a61834fb</id>
+        </usr:getUserDetail>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+CREAR USUARIO
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://www.example.org/users/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:createUser>
+            <name>aaaaa</name>
+            <lastname>aaaaaaa</lastname>
+            <address>111 Main St</address>
+            <phone>111111</phone>
+            <username>aaaa</username>
+            <email>aaaaa@example.com</email>
+            <password>1234567</password>
+            <role_id>2</role_id>
+            <status_id>1</status_id>
+        </usr:createUser>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+
+----------
+
+EDITAR USUARIO 
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://www.example.org/users/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:updateUser>
+            <id>81970b1f-b833-4ba3-b828-9164a61834fb</id>
+            <name>Jojan</name>
+            <lastname>Cardozo</lastname>
+            <address>111 Main St</address>
+            <phone>111111</phone>
+            <username>jojan</username>
+            <email>jecardozo@example.com</email>
+            <password>1234567</password>
+            <role_id>2</role_id>
+            <status_id>2</status_id>
+        </usr:updateUser>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+ELIMINAR USUARIO
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:usr="http://www.example.org/users/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <usr:deleteUser> 
+        <id>81970b1f-b833-4ba3-b828-9164a61834fb</id>
+        </usr:deleteUser>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+----------
