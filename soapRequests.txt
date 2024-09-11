@@ -108,14 +108,14 @@ CREAR USUARIO
     <soapenv:Header/>
     <soapenv:Body>
         <usr:createUser>
-            <name>aaaaa</name>
-            <lastname>aaaaaaa</lastname>
+            <name>Andres</name>
+            <lastname>Ocampo</lastname>
             <address>111 Main St</address>
             <phone>111111</phone>
-            <username>aaaa</username>
-            <email>aaaaa@example.com</email>
+            <username>andrew</username>
+            <email>andress@example.com</email>
             <password>1234567</password>
-            <role_id>2</role_id>
+            <role_id>1</role_id>
             <status_id>1</status_id>
         </usr:createUser>
     </soapenv:Body>
