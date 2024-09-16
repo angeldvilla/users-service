@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <definitions name="LoginService"
+             targetNamespace="http://www.example.org/login/"
+             xmlns:tns="http://www.example.org/login/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Mensajes para iniciar sesión -->
+    <message name="GetLoginRequest">
+        <part name="username" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+
+    <message name="GetLoginResponse">
+    <part name="success" type="xsd:string"/>
+    <part name="token" type="xsd:string"/>
+    <part name="isActive" type="xsd:string"/>
+    </message>
+
+    <!-- Mensajes para cerrar sesión -->
+    <message name="GetLogoutRequest">
+        <part name="user_id" type="xsd:string"/>
+    </message>
+    <message name="GetLogoutResponse">
+        <part name="success" type="xsd:string"/>
+    </message>
+
+
+    <portType name="LoginPortType">
+     <operation name="getLogin">
+            <input message="tns:GetLoginRequest"/>
+            <output message="tns:GetLoginResponse"/>
+        </operation>
+        <operation name="getLogout">
+            <input message="tns:GetLogoutRequest"/>
+            <output message="tns:GetLogoutResponse"/>
+        </operation>
+    </portType>
+
+
+    <binding name="LoginBinding" type="tns:LoginPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+         <operation name="getLogin">
+            <soap:operation soapAction="urn:getLogin"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getLogout">
+            <soap:operation soapAction="urn:getLogout"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="LoginService">
+        <port name="LoginPort" binding="tns:LoginBinding">
+            <soap:address location="http://localhost:3002/login"/>
+        </port>
+    </service>
+
+</definitions>
