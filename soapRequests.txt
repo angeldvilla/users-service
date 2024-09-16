@@ -107,17 +107,78 @@ CREAR USUARIO
                   xmlns:usr="http://www.example.org/users/">
     <soapenv:Header/>
     <soapenv:Body>
-        <usr:createUser>
-            <name>Andres</name>
-            <lastname>Ocampo</lastname>
-            <address>111 Main St</address>
-            <phone>111111</phone>
-            <username>andrew</username>
-            <email>andress@example.com</email>
-            <password>1234567</password>
-            <role_id>1</role_id>
-            <status_id>1</status_id>
-        </usr:createUser>
+    <usr:createUser>
+        <name>Andres</name>
+        <lastname>Ocampo</lastname>
+        <address>111 Main St</address>
+        <phone>111111</phone>
+        <username>andrew</username>
+        <email>andress@example.com</email>
+        <password>1234567</password>
+        <role_id>1</role_id>
+        <status_id>1</status_id>
+    </usr:createUser>
+        
+    <usr:createUser>
+        <name>John</name>
+        <lastname>Doe</lastname>
+        <address>123 Maple Street, Springfield</address>
+        <phone>555-1234</phone>
+        <username>johndoe</username>
+        <email>johndoe@example.com</email>
+        <password>1234567</password>
+        <role_id>1</role_id> <!-- Admin -->
+        <status_id>1</status_id> <!-- Activo -->
+    </usr:createUser>
+
+    <usr:createUser>
+        <name>Jane</name>
+        <lastname>Smith</lastname>
+        <address>456 Oak Avenue, Riverside</address>
+        <phone>555-5678</phone>
+        <username>janesmith</username>
+        <email>janesmith@example.com</email>
+        <password>1234567</password>
+        <role_id>3</role_id> <!-- Cliente -->
+        <status_id>1</status_id> <!-- Activo -->
+    </usr:createUser>
+
+    <usr:createUser>
+        <name>Michael</name>
+        <lastname>Johnson</lastname>
+        <address>789 Pine Road, Lakeview</address>
+        <phone>555-9012</phone>
+        <username>michaelj</username>
+        <email>michaelj@example.com</email>
+        <password>1234567</password>
+        <role_id>3</role_id> <!-- Cliente -->
+        <status_id>1</status_id> <!-- Activo -->
+    </usr:createUser>
+
+    <usr:createUser>
+        <name>Emily</name>
+        <lastname>Davis</lastname>
+        <address>101 Cedar Lane, Brookfield</address>
+        <phone>555-3456</phone>
+        <username>emilydavis</username>
+        <email>emilydavis@example.com</email>
+        <password>1234567</password>
+        <role_id>2</role_id> <!-- Empleado -->
+        <status_id>1</status_id> <!-- Activo -->
+    </usr:createUser>
+
+    <usr:createUser>
+        <name>David</name>
+        <lastname>Martinez</lastname>
+        <address>202 Birch Boulevard, Hillside</address>
+        <phone>555-7890</phone>
+        <username>davidm</username>
+        <email>davidm@example.com</email>
+        <password>1234567</password>
+        <role_id>2</role_id> <!-- Empleado -->
+        <status_id>1</status_id> <!-- Activo -->
+    </usr:createUser>
+
     </soapenv:Body>
 </soapenv:Envelope>
 
@@ -157,6 +218,38 @@ ELIMINAR USUARIO
         <id>81970b1f-b833-4ba3-b828-9164a61834fb</id>
         </usr:deleteUser>
     </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+
+
+LOGIN
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:log="http://www.example.org/login/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <log:getLogin>
+         <username>johndoe</username>
+         <password>1234567</password>
+      </log:getLogin>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+----------
+
+
+
+LOGOUT 
+----------
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:log="http://www.example.org/login/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <log:getLogout>
+         <user_id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</user_id>
+      </log:getLogout>
+   </soapenv:Body>
 </soapenv:Envelope>
 
 ----------
