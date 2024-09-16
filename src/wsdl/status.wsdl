@@ -18,7 +18,7 @@
             </xsd:sequence>
         </xsd:complexType>
 
-           <!-- Define Array de Estadosd -->
+           <!-- Define Array de Estados -->
         <xsd:complexType name="StatusArray">
             <xsd:sequence>
                 <xsd:element name="status" type="tns:Status" maxOccurs="unbounded"/>
