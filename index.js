@@ -11,6 +11,7 @@ const userService = require('./src/service/userService');
 const rolesService = require('./src/service/roleService');
 const statusService = require('./src/service/statService');
 const loginService = require('./src/service/loginService');
+const viewProductsClient = require('./src/service/viewProducts');
 
 //WSDL
 const usersWSDL = fs.readFileSync('src/wsdl/users.wsdl', 'utf8');
@@ -145,6 +146,26 @@ sequelize.authenticate()
         app.get('/login/wsdl', (req, res) => {
             res.set('Content-Type', 'text/xml');
             res.send(loginWSDL);
+        });
+
+        // Ruta para obtener productos desde el servicio de usuarios
+        app.get('/products', async (req, res) => {
+            try {
+                const client = await viewProductsClient();
+
+                // Llama al método viewProducts del servicio de productos
+                const { products } = await client.getProducts({});
+
+                console.log('Respuesta SOAP:', products);
+                if (products && products.products) {
+                    return res.json(products);
+                  } else {
+                    return res.status(404).json({ error: 'No se encontraron productos' });
+                  }
+            } catch (error) {
+                console.error('Error al obtener productos:', error);
+                return res.status(500).json({ error: 'Error al obtener productos', details: error.message });
+            }
         });
 
         app.listen(port, function () {
