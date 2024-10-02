@@ -6,8 +6,8 @@ const Login = require('./models/login');
 
 sequelize.sync({ force: true })
     .then(() => {
-        console.log("Database & tables created!");
+        console.log("Base de datos sincronizada!");
     })
     .catch(err => {
-        console.error('Error syncing database:', err);
+        console.error('Error sincronizando la base de datos:', err);
     });
