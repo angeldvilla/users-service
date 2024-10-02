@@ -9,7 +9,7 @@
 
 ## Correr la base de datos en local
 1. Asegurarse de tener xampp y correr mysql en el puerto 3306
-2. Ir al gestor de DB mysql (phpMyAdmin u otro) y crear la base de datos con el nombre (products_db)
+2. Ir al gestor de DB mysql (phpMyAdmin u otro) y crear la base de datos con el nombre (users_db)
 3. Ejecutar el comando npm sync en consola en el directorio donde este la carpeta del repositorio
 
 PD: automaticamente puedes fijarte en el gestor de mysql (phpMyAdmin u otro) que se hayan creado las tablas
