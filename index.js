@@ -11,7 +11,7 @@ const userService = require('./src/service/userService');
 const rolesService = require('./src/service/roleService');
 const statusService = require('./src/service/statService');
 const loginService = require('./src/service/loginService');
-const viewProductsClient = require('./src/service/viewProducts');
+const { viewProductsClient, searchProduct, filterProducts } = require('./src/service/viewProducts');
 
 //WSDL
 const usersWSDL = fs.readFileSync('src/wsdl/users.wsdl', 'utf8');
@@ -151,20 +151,35 @@ sequelize.authenticate()
         // Ruta para obtener productos desde el servicio de usuarios
         app.get('/products', async (req, res) => {
             try {
-                const client = await viewProductsClient();
-
-                // Llama al método viewProducts del servicio de productos
-                const { products } = await client.getProducts({});
-
-                console.log('Respuesta SOAP:', products);
-                if (products && products.products) {
-                    return res.json(products);
-                  } else {
-                    return res.status(404).json({ error: 'No se encontraron productos' });
-                  }
+                const xmlResponse = await viewProductsClient(req, res);
+                res.set('Content-Type', 'text/xml'); // Establece el tipo de contenido como XML
+                return res.status(200).send(xmlResponse); // Envía la respuesta XML
             } catch (error) {
                 console.error('Error al obtener productos:', error);
-                return res.status(500).json({ error: 'Error al obtener productos', details: error.message });
+                return res.status(500).send(`<error>Error al obtener productos: ${error.message}</error>`);
+            }
+        });
+
+        app.get('/products/:name', async (req, res) => {
+            try {
+                const xmlResponse = await searchProduct(req, res);
+                res.set('Content-Type', 'text/xml');
+                return res.status(200).send(xmlResponse);
+            } catch (error) {
+                console.error('Error al buscar este producto:', error);
+                return res.status(500).send(`<error>Error al buscar este producto: ${error.message}</error>`);
+            }
+        });
+
+
+        app.get('/products/:category', async (req, res) => {
+            try {
+                const xmlResponse = await searchProduct(req, res);
+                res.set('Content-Type', 'text/xml');
+                return res.status(200).send(xmlResponse);
+            } catch (error) {
+                console.error('Error al obtener productos por categoría:', error);
+                return res.status(500).send(`<error>Error al obtener productos por categoría: ${error.message}</error>`);
             }
         });
 
