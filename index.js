@@ -160,7 +160,7 @@ sequelize.authenticate()
             }
         });
 
-        app.get('/products/:name', async (req, res) => {
+        app.get('/products/search/:name', async (req, res) => {
             try {
                 const xmlResponse = await searchProduct(req, res);
                 res.set('Content-Type', 'text/xml');
@@ -172,7 +172,7 @@ sequelize.authenticate()
         });
 
 
-        app.get('/products/:category', async (req, res) => {
+        app.get('/products/filter/:category', async (req, res) => {
             try {
                 const xmlResponse = await searchProduct(req, res);
                 res.set('Content-Type', 'text/xml');
