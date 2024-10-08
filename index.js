@@ -174,7 +174,7 @@ sequelize.authenticate()
 
         app.get('/products/filter/:category', async (req, res) => {
             try {
-                const xmlResponse = await searchProduct(req, res);
+                const xmlResponse = await filterProducts(req, res);
                 res.set('Content-Type', 'text/xml');
                 return res.status(200).send(xmlResponse);
             } catch (error) {
