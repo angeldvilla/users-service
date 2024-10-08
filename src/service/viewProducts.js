@@ -27,7 +27,7 @@ const viewProductsClient = async() => {
 };
 
 const searchProduct = async (req, res) => {
-  const productName = req.params.name.trim();
+  const productName = req.params.name;
   //const encodedProductName = encodeURIComponent(productName);
   const soapRequest = `
   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
@@ -56,7 +56,7 @@ const searchProduct = async (req, res) => {
 
 
 const filterProducts = async (req, res) => {
-  const productsFilter = req.params.category.trim();
+  const productsFilter = req.params.category;
   //const encodedProductName = encodeURIComponent(productsFilter);
   const soapRequest = `
   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
