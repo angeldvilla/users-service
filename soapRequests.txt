@@ -253,3 +253,12 @@ LOGOUT
 </soapenv:Envelope>
 
 ----------
+
+OBTENER PRODUCTOS
+hacer peticion GET -> http://localhost:3002/products
+
+BUSCAR PRODUCTO POR NOMBRE
+hacer peticion GET -> http://localhost:3002/products/search/nombreProducto
+
+FILTRAR PRODUCTOS POR CATEGORIA
+hacer peticion GET -> http://localhost:3002/products/filter/nombreCategoria
