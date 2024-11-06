@@ -81,7 +81,7 @@ const loginService = {
                     }
 
                     // Desactivar la sesión
-                    await Login.update({ isActive: false }, {
+                    await Login.update({ token: "", isActive: false }, {
                         where: { id: session.id }
                     });
 
