@@ -93,7 +93,7 @@ VER DETALLE DE USUARIO
     <soapenv:Header/>
     <soapenv:Body>
         <usr:getUserDetail>
-        <id>81970b1f-b833-4ba3-b828-9164a61834fb</id>
+        <id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</id>
         </usr:getUserDetail>
     </soapenv:Body>
 </soapenv:Envelope>
@@ -261,4 +261,7 @@ BUSCAR PRODUCTO POR NOMBRE
 hacer peticion GET -> http://localhost:3002/products/search/nombreProducto
 
 FILTRAR PRODUCTOS POR CATEGORIA
-hacer peticion GET -> http://localhost:3002/products/filter/nombreCategoria
+hacer peticion GET -> http://localhost:3002/products/filterCategory/nombreCategoria
+
+FILTRAR PRODUCTOS POR MARCA
+hacer peticion GET -> http://localhost:3002/products/filterBrand/nombreMarca
