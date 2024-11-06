@@ -14,8 +14,6 @@
 
     <message name="GetLoginResponse">
     <part name="success" type="xsd:string"/>
-    <part name="token" type="xsd:string"/>
-    <part name="isActive" type="xsd:string"/>
     </message>
 
     <!-- Mensajes para cerrar sesión -->
