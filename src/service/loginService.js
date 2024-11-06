@@ -21,6 +21,9 @@ const loginService = {
                         }
                     }
 
+                    // validar session
+                     const session = await Login.findOne({ where: { user_id: user.id, isActive: false } });
+
                     // Comparar la contraseña con bcrypt
                     const validPassword = await bcrypt.compare(args.password, user.password);
 
@@ -36,17 +39,26 @@ const loginService = {
                     // crear token para simular manualmente la autenticación
                     const token = Math.random().toString(36).substring(2);
 
-                    // Crear una nueva sesión activa
-                    Login.create({
-                        token: token,
-                        user_id: user.id,
-                        isActive: true
-                    });
+                    // si ya hay una sesion creada para un usuario solo enviar un nuevo token y cambiar el estado isActive
+                    if(session) {
+                        await Login.update({
+                            token: token,
+                            isActive: true,
+                        },
+                        {
+                            where: { user_id: user.id }
+                        });
+                    } else {
+                        // Crear una nueva sesión activa
+                        await Login.create({
+                            token: token,
+                            user_id: user.id,
+                            isActive: true
+                        });
+                    }
 
                     return {
                         success: 'Inicio de sesión exitoso',
-                        token: token,
-                        isActive: true
                     }
 
                 } catch (error) {
