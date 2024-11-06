@@ -1,0 +1,341 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Servicio de Gestión de Usuarios",
+    "collectionId": "abc30df8-6b73-4072-a740-782752cc47b6",
+    "dateExported": "2024-11-06T16:42:22.482Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ee437c62-2999-4d9e-a4e2-ce0892fb60a8",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Ver estados",
+            "url": "http://localhost:3002/statuses",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-06T16:19:18.498Z",
+            "modified": "2024-11-06T16:19:18.498Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:stat=\"http://www.example.org/statuses/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <stat:getStatus />\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "4d33630a-e5be-436c-adc9-99d5aacf34b2",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Crear estados de usuarios",
+            "url": "http://localhost:3002/statuses",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-06T16:19:44.312Z",
+            "modified": "2024-11-06T16:19:44.312Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:stat=\"http://www.example.org/statuses/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <stat:createStatus>\r\n            <status_name>Activo</status_name>\r\n        </stat:createStatus>\r\n        <stat:createStatus>\r\n            <status_name>Inactivo</status_name>\r\n        </stat:createStatus>\r\n        <stat:createStatus>\r\n            <status_name>Bloqueado</status_name>\r\n        </stat:createStatus>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "da3f6940-1104-4b4c-944b-b86ee45a9eca",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Ver roles de usuarios",
+            "url": "http://localhost:3002/roles",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-06T16:20:02.912Z",
+            "modified": "2024-11-06T16:20:02.912Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:rol=\"http://www.example.org/roles/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <stat:getRoles />\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "46f70525-08a4-4b56-ae07-fd5d1dc4b19f",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Crear roles de usuarios",
+            "url": "http://localhost:3002/roles",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-11-06T16:20:20.280Z",
+            "modified": "2024-11-06T16:20:20.280Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:rol=\"http://www.example.org/roles/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <rol:createRole>\r\n            <rol>Administrador</rol>\r\n        </rol:createRole>\r\n        <rol:createRole>\r\n            <rol>Empleado</rol>\r\n        </rol:createRole>\r\n        <rol:createRole>\r\n            <rol>Cliente</rol>\r\n        </rol:createRole>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "999c11b2-ebcc-44dc-96be-8c9b82820a5f",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Ver usuarios",
+            "url": "http://localhost:3002/users",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-11-06T16:20:49.376Z",
+            "modified": "2024-11-06T16:20:49.376Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:usr=\"http://www.example.org/users/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <usr:getAllUsers />\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "375700ef-9e5b-495e-a38e-4daebc1cf7d7",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Ver detalle de usuario",
+            "url": "http://localhost:3002/users",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-11-06T16:21:39.960Z",
+            "modified": "2024-11-06T16:21:39.960Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:usr=\"http://www.example.org/users/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <usr:getUserDetail>\r\n        <id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</id>\r\n        </usr:getUserDetail>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "e96661af-1209-4462-a35d-37fb38c51b29",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Crear usuarios",
+            "url": "http://localhost:3002/users",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-11-06T16:23:09.590Z",
+            "modified": "2024-11-06T16:23:09.590Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:usr=\"http://www.example.org/users/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n    <usr:createUser>\r\n        <name>David</name>\r\n        <lastname>Martinez</lastname>\r\n        <address>202 Birch Boulevard, Hillside</address>\r\n        <phone>555-7890</phone>\r\n        <username>davidm</username>\r\n        <email>davidm@example.com</email>\r\n        <password>1234567</password>\r\n        <role_id>2</role_id> <!-- Empleado -->\r\n        <status_id>1</status_id> <!-- Activo -->\r\n    </usr:createUser>\r\n\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "2237da89-0fec-46ec-930e-717414ea8821",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Editar usuario",
+            "url": "http://localhost:3002/users",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-11-06T16:23:46.494Z",
+            "modified": "2024-11-06T16:23:46.494Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:usr=\"http://www.example.org/users/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <usr:updateUser>\r\n            <id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</id>\r\n            <name>Jojan</name>\r\n            <lastname>Cardozo</lastname>\r\n            <address>111 Main St</address>\r\n            <phone>111111</phone>\r\n            <username>jojan</username>\r\n            <email>jecardozo@example.com</email>\r\n            <password>1234567</password>\r\n            <role_id>2</role_id>\r\n            <status_id>2</status_id>\r\n        </usr:updateUser>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "c9f8a11f-063b-4bc5-8bd1-54458380ebd3",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Eliminar usuario",
+            "url": "http://localhost:3002/users",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-11-06T16:24:11.902Z",
+            "modified": "2024-11-06T16:24:11.902Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:usr=\"http://www.example.org/users/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <usr:deleteUser> \r\n         <id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</id>\r\n        </usr:deleteUser>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "84797fa1-d7f5-4656-8373-151f49497c4b",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Iniciar Sesion",
+            "url": "http://localhost:3002/login",
+            "method": "POST",
+            "sortNum": 95000,
+            "created": "2024-11-06T16:26:55.612Z",
+            "modified": "2024-11-06T16:26:55.612Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:log=\"http://www.example.org/login/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <log:getLogin>\r\n         <username>johndoe</username>\r\n         <password>1234567</password>\r\n      </log:getLogin>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "4457620e-c6c0-4e5b-8e6f-8333871b7c4e",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Cerrar Sesion",
+            "url": "http://localhost:3002/login",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-11-06T16:26:41.756Z",
+            "modified": "2024-11-06T16:26:41.756Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:log=\"http://www.example.org/login/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <log:getLogout>\r\n         <user_id>7cea2b3f-525a-4f62-8ca4-3bf59d95e366</user_id>\r\n      </log:getLogout>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+                "form": []
+            }
+        },
+        {
+            "_id": "6c3426fe-3c35-486e-90f9-67d94f4e8630",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "Usuario navega por el catálogo de productos",
+            "url": "http://localhost:3002/products",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-11-06T16:36:00.305Z",
+            "modified": "2024-11-06T16:36:00.305Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "OBTENER PRODUCTOS\r\nhacer peticion GET -> http://localhost:3002/products",
+                "form": []
+            }
+        },
+        {
+            "_id": "0d27aab5-eb45-48c6-b3a0-fedc4fee1adc",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "El usuario busca producto por nombre",
+            "url": "http://localhost:3002/products/search/dados",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-11-06T16:37:38.116Z",
+            "modified": "2024-11-06T16:37:38.116Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "BUSCAR PRODUCTO POR NOMBRE\r\nhacer peticion GET -> http://localhost:3002/products/search/nombreProducto",
+                "form": []
+            }
+        },
+        {
+            "_id": "c00952db-4b3c-4f61-84fd-d80775f46272",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "El usuario filtra productos por categoria",
+            "url": "http://localhost:3002/products/filterCategory/juguetes",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2024-11-06T16:38:25.452Z",
+            "modified": "2024-11-06T16:39:50.261Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "FILTRAR PRODUCTOS POR CATEGORIA\nhacer peticion GET -> http://localhost:3002/products/filterCategory/nombreCategoria",
+                "form": []
+            }
+        },
+        {
+            "_id": "db71d775-17fa-40d8-afb3-f6f062f9995f",
+            "colId": "abc30df8-6b73-4072-a740-782752cc47b6",
+            "containerId": "",
+            "name": "El usuario filtra productos por marca",
+            "url": "http://localhost:3002/products/filterBrand/Lovense",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-11-06T16:41:29.994Z",
+            "modified": "2024-11-06T16:41:29.994Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "text/xml"
+                }
+            ],
+            "body": {
+                "type": "xml",
+                "raw": "FILTRAR PRODUCTOS POR MARCA\r\nhacer peticion GET -> http://localhost:3002/products/filterBrand/nombreMarca",
+                "form": []
+            }
+        }
+    ],
+    "ref": "AhdTcG3yXGerW8rvhSAVldF4YjcaAt0qtfuDZQlch-Ycu9oOmE1mW5J6lOG5NPlPvGZNNg8T9SVVzedMvZoxEA"
+}
