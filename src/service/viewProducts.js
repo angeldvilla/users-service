@@ -55,16 +55,15 @@ const searchProduct = async (req, res) => {
 };
 
 
-const filterProducts = async (req, res) => {
-  const productsFilter = req.params.category;
-  //const encodedProductName = encodeURIComponent(productsFilter);
+const filterProductsByCategory = async (req, res) => {
+  const categoryFilter = req.params.category;
   const soapRequest = `
   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
     xmlns:prod="http://www.example.org/products/">
     <soapenv:Header/>
     <soapenv:Body>
         <prod:getProductsByCategory>
-            <category_name>${productsFilter}</category_name>
+            <category_name>${categoryFilter}</category_name>
         </prod:getProductsByCategory>
     </soapenv:Body>
   </soapenv:Envelope>
@@ -84,9 +83,37 @@ const filterProducts = async (req, res) => {
   }
 };
 
+const filterProductsByBrand = async (req, res) => {
+  const brandFilter = req.params.brand;
+  const soapRequest = `
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://www.example.org/products/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <prod:getProductsByBrand>
+            <brand_name>${brandFilter}</brand_name>
+        </prod:getProductsByBrand>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  `;
+
+  try {
+    const response = await axios.post(url, soapRequest, {
+        headers: {
+            'Content-Type': 'text/xml; charset=utf-8',
+            'SOAPAction': 'urn:getProductsByBrand'
+        }
+    });
+
+    return response.data; 
+  } catch (error) {
+        console.error('Error en la solicitud SOAP:', error);
+  }
+};
+
 module.exports = {
   viewProductsClient,
   searchProduct,
-  filterProducts
-
+  filterProductsByCategory,
+  filterProductsByBrand
 };
