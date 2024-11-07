@@ -24,6 +24,15 @@
         <part name="success" type="xsd:string"/>
     </message>
 
+    <!-- Mensajes para validacion de token -->
+    <message name="ValidateTokenRequest">
+        <part name="token" type="xsd:string"/>
+    </message>
+    <message name="ValidateTokenResponse">
+        <part name="success" type="xsd:string"/>
+        <part name="user" type="xsd:string"/>
+    </message>
+
 
     <portType name="LoginPortType">
      <operation name="getLogin">
@@ -33,6 +42,10 @@
         <operation name="getLogout">
             <input message="tns:GetLogoutRequest"/>
             <output message="tns:GetLogoutResponse"/>
+        </operation>
+        <operation name="validateToken">
+            <input message="tns:ValidateTokenRequest"/>
+            <output message="tns:ValidateTokenResponse"/>
         </operation>
     </portType>
 
@@ -50,6 +63,15 @@
         </operation>
         <operation name="getLogout">
             <soap:operation soapAction="urn:getLogout"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="validateToken">
+            <soap:operation soapAction="urn:validateToken"/>
             <input>
                 <soap:body use="literal"/>
             </input>

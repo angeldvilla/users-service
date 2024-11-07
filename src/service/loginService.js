@@ -22,7 +22,7 @@ const loginService = {
                     }
 
                     // validar session
-                     const session = await Login.findOne({ where: { user_id: user.id, isActive: false } });
+                    const session = await Login.findOne({ where: { user_id: user.id, isActive: false } });
 
                     // Comparar la contraseña con bcrypt
                     const validPassword = await bcrypt.compare(args.password, user.password);
@@ -40,14 +40,14 @@ const loginService = {
                     const token = Math.random().toString(36).substring(2);
 
                     // si ya hay una sesion creada para un usuario solo enviar un nuevo token y cambiar el estado isActive
-                    if(session) {
+                    if (session) {
                         await Login.update({
                             token: token,
                             isActive: true,
                         },
-                        {
-                            where: { user_id: user.id }
-                        });
+                            {
+                                where: { user_id: user.id }
+                            });
                     } else {
                         // Crear una nueva sesión activa
                         await Login.create({
@@ -86,7 +86,7 @@ const loginService = {
                     });
 
                     // eliminar la sesión
-        
+
                     /* await Login.destroy({
                         where: { id: session.id }
                     }); */
@@ -100,6 +100,29 @@ const loginService = {
                     throw new Error('Error al cerrar sesión, puede ser que la sesion ya este cerrada o haya expirado');
                 }
             },
+
+            validateToken: async function (args) {
+                try {
+                    const session = await Login.findOne({
+                        where: { token: args.token, isActive: true }
+                    });
+
+                    if (!session) {
+                        return {
+                            success: "Token inválido o sesión no activa",
+                        };
+                    }
+
+                    return {
+                        success: "Token validado",
+                        user: session.user_id,
+                    }
+
+                } catch (error) {
+                    console.log('Error al validar token:', error);
+                    throw new Error('Error al validar token');
+                }
+            }
         },
     },
 };
