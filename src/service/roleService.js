@@ -13,8 +13,8 @@ const rolesService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al obtener los roles:', error);
-                    throw new Error('No se pudieron obtener los roles');
+                    console.log('Error al obtener los roles:', error);
+                    return { message: 'No se pudieron obtener los roles' };
                 }
             },
 
@@ -27,8 +27,8 @@ const rolesService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al crear el rol:', error);
-                    throw new Error('Error al crear el rol');
+                    console.log('Error al crear el rol:', error);
+                    return { message: 'Error al crear el rol' };
                 }
             },
         },
