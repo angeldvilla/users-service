@@ -9,5 +9,5 @@ sequelize.sync({ force: true })
         console.log("Base de datos sincronizada!");
     })
     .catch(err => {
-        console.error('Error sincronizando la base de datos:', err);
+        console.log('Error sincronizando la base de datos:', err);
     });
