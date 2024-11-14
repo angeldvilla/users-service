@@ -12,8 +12,8 @@ const statusService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al obtener los roles:', error);
-                    throw new Error('No se pudieron obtener los roles');
+                    console.log('Error al obtener los roles:', error);
+                    return { message: 'No se pudieron obtener los roles'};
                 }
             },
 
@@ -26,8 +26,8 @@ const statusService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al crear el estado de usuario:', error);
-                    throw new Error('Error al crear el estado de usuario');
+                    console.log('Error al crear el estado de usuario:', error);
+                    return { message: 'Error al crear el estado de usuario' };
                 }
             },
         },
