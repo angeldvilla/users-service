@@ -34,10 +34,11 @@ const userService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al obtener los usuarios:', error);
-                    throw new Error('No se encontraron los usuarios');
+                    console.log('Error al obtener los usuarios:', error);
+                    return { message: 'No se encontraron los usuarios' };
                 }
             },
+
             getUserDetail: async function (args) {
                 try {
                     const user = await Users.findByPk(args.id, {
@@ -65,10 +66,11 @@ const userService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al obtener los detalles del usuario:', error);
-                    throw new Error('No se pudieron obtener los detalles del usuario');
+                    console.log('Error al obtener los detalles del usuario:', error);
+                    return { message: 'Error al obtener los detalles del usuario' };
                 }
             },
+
             createUser: async function (args) {
                 try {
                     const existingUser = await Users.findOne({ where: { username: args.username } });
@@ -93,10 +95,11 @@ const userService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al crear el usuario:', error);
-                    throw new Error('Error al crear el usuario');
+                    console.log('Error al crear el usuario:', error);
+                    return { message: 'Error al crear el usuario' };
                 }
             },
+            
             updateUser: async function (args) {
                 try {
                     const user = await Users.findByPk(args.id);
@@ -133,10 +136,11 @@ const userService = {
                     };
 
                 } catch (error) {
-                    console.error('Error al actualizar el usuario:', error);
-                    throw new Error('Error al actualizar el usuario');
+                    console.log('Error al actualizar el usuario:', error);
+                    return { message: 'Error al actualizar el usuario' };
                 }
             },
+
             deleteUser: async function (args) {
                 try {
                     const user = await Users.findByPk(args.id);
@@ -148,8 +152,8 @@ const userService = {
                     return { success: 'Usuario eliminado exitosamente' };
 
                 } catch (error) {
-                    console.error('Error al eliminar usuario:', error);
-                    throw new Error('Error al eliminar usuario');
+                    console.log('Error al eliminar usuario:', error);
+                    return { message: 'Error al eliminar usuario' };
                 }
             },
         },
