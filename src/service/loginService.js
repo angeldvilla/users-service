@@ -63,7 +63,7 @@ const loginService = {
 
                 } catch (error) {
                     console.log('Error al iniciar sesion, verifica los credenciales, intenta de nuevo:', error);
-                    throw new Error('Error al iniciar sesion, verifica los credenciales, intenta de nuevo');
+                    return { message: 'Error al iniciar sesion, verifica los credenciales, intenta de nuevo' };
                 }
             },
 
@@ -86,7 +86,6 @@ const loginService = {
                     });
 
                     // eliminar la sesión
-
                     /* await Login.destroy({
                         where: { id: session.id }
                     }); */
@@ -97,7 +96,7 @@ const loginService = {
 
                 } catch (error) {
                     console.log('Error al cerrar sesión, puede ser que la sesion ya este cerrada o haya expirado:', error);
-                    throw new Error('Error al cerrar sesión, puede ser que la sesion ya este cerrada o haya expirado');
+                    return { message: 'Error al cerrar sesión, puede ser que la sesion ya este cerrada o haya expirado' };
                 }
             },
 
@@ -120,7 +119,7 @@ const loginService = {
 
                 } catch (error) {
                     console.log('Error al validar token:', error);
-                    throw new Error('Error al validar token');
+                    return { message: 'Error al validar token' };
                 }
             }
         },
