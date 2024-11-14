@@ -56,5 +56,5 @@ sequelize.authenticate()
         });
     })
     .catch(err => {
-        console.log('No se puede conectar a la base de datos:\n', err);
+        console.log('No se puede conectar a la base de datos: \n', err);
     });
